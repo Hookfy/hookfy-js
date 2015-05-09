@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'src/**/*.js',
+      'test/helpers/**/*.js',
       'test/**/*-spec.js'
     ],
 
@@ -36,6 +37,15 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress', 'coverage'],
+     coverageReporter: {
+      // specify a common output directory
+      dir: 'coverage/',
+      reporters: [
+        // reporters not supporting the `file` property
+        { type: 'html', subdir: 'report-html' },
+        { type: 'text', subdir: '.' }
+      ]
+    },
 
 
     // web server port
