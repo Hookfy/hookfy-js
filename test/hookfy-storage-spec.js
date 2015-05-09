@@ -23,7 +23,7 @@ describe("Hookfy", function(){
 		});
 
 		it ("should store a feedback", function(){
-			hookfy.send({feature: "Feature", feeling: "happy"});
+			hookfy.feedback({feature: "Feature", feeling: "happy"});
 			var storage = JSON.parse(localStorage.getItem(_storageKey));
 			expect(storage.length).toEqual(1);
 		});
@@ -31,14 +31,14 @@ describe("Hookfy", function(){
 		it ("should store a feedback", function(){
 			_storage = Storage;
 			Storage = undefined;
-			hookfy.send({feature: "Feature", feeling: "happy"});
+			hookfy.feedback({feature: "Feature", feeling: "happy"});
 			expect(hookfy.getStorage().length).toEqual(1);
 			Storage = _storage;
 		});
 
 		it ("should store a feedback on empty store", function(){
 			localStorage.setItem(_storageKey, null);
-			hookfy.send({feature: "Feature", feeling: "happy"});
+			hookfy.feedback({feature: "Feature", feeling: "happy"});
 			expect(hookfy.getStorage().length).toEqual(1);
 		});
 	});

@@ -57,9 +57,11 @@ var hookfy = (function(){
 				send(feedback);
 			}
 		}
-		http.open("GET", "http://hookfy.com", true);
+		var feedback_url = "http://localhost:3000/feedback/" + _token + "/" + feedback.feature;
+		delete feedback.feature;
+		http.open("POST", feedback_url, true);
 		http.setRequestHeader("Content-Type","application/json");
-		http.send(JSON.stringify(feedback));
+		http.send(JSON.stringify({feedback: feedback}));
 	}
 
 	function run(){
@@ -69,7 +71,7 @@ var hookfy = (function(){
 	return {
 		initialize : initialize,
 		getToken: getToken,
-		send: send,
+		feedback: send,
 		getStorage: getStorage
 	}
 })();

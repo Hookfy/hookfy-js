@@ -12,13 +12,15 @@ describe("background", function(){
 	});
 
 	it("should send to api", function(){
-		assertRequest(4, 204, function(data, headers){
-			expect(data).toEqual('{"feedback":"sad","feature":"Feature"}');
-			expect(headers['Content-Type']).toBeDefined();
-			expect(headers['Content-Type']).toEqual('application/json');
+		assertRequest(4, 204, function(data, http){
+			expect(data).toEqual('{"feedback":{"feeling":"sad","comment":"a coment"}}');
+			expect(http.headers['Content-Type']).toBeDefined();
+			expect(http.headers['Content-Type']).toEqual('application/json');
+			expect(http.method).toEqual('POST');
+			expect(http.async).toEqual(true);
 		});
 
-		hookfy.send({ feedback: "sad", feature: "Feature"});
+		hookfy.feedback({ feeling: "sad", feature: "Feature", comment: "a coment"});
 		jasmine.clock().tick(101);
 
 		expect(hookfy.getStorage().length).toEqual(0);
@@ -26,10 +28,10 @@ describe("background", function(){
 
 	it("should survive on api fail", function(){
 		assertRequest(4, 404, function(data){
-			expect(data).toEqual('{"feedback":"sad","feature":"Feature"}');
+			expect(data).toEqual('{"feedback":{"feeling":"sad","comment":"a coment"}}');
 		});
 		
-		hookfy.send({ feedback: "sad", feature: "Feature"});
+		hookfy.feedback({ feeling: "sad", feature: "Feature", comment: "a coment"});
 		jasmine.clock().tick(101);
 
 		expect(hookfy.getStorage().length).toEqual(1);
