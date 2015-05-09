@@ -5,8 +5,12 @@ function assertRequest(state, status, mockedSend){
 			this.readyState = state;
 			this.status = status;
 			this.onreadystatechange();
-			mockedSend(data);
+			mockedSend(data, this.headers);
 		},
-		open : function(method, url, async){}
+		open : function(method, url, async){},
+		headers : {},
+		setRequestHeader : function(key, value){
+			this.headers[key] = value;
+		}
 	}
 }

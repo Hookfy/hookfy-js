@@ -58,6 +58,7 @@ var hookfy = (function(){
 			}
 		}
 		http.open("GET", "http://hookfy.com", true);
+		http.setRequestHeader("Content-Type","application/json");
 		http.send(JSON.stringify(feedback));
 	}
 

@@ -12,8 +12,10 @@ describe("background", function(){
 	});
 
 	it("should send to api", function(){
-		assertRequest(4, 204, function(data){
+		assertRequest(4, 204, function(data, headers){
 			expect(data).toEqual('{"feedback":"sad","feature":"Feature"}');
+			expect(headers['Content-Type']).toBeDefined();
+			expect(headers['Content-Type']).toEqual('application/json');
 		});
 
 		hookfy.send({ feedback: "sad", feature: "Feature"});
