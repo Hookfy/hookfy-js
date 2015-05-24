@@ -1,0 +1,21 @@
+{
+  "name": "hookfy-js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Hookfy/hookfy-js",
+  "authors": [
+    "Lucas Merencia <lucas.merencia@gmail.com>"
+  ],
+  "description": "Hookfy JavaScript API",
+  "main": "src/hookfy.js",
+  "keywords": [
+    "hookfy"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
