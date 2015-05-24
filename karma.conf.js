@@ -43,6 +43,7 @@ module.exports = function(config) {
       reporters: [
         // reporters not supporting the `file` property
         { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'report-lcov' },
         { type: 'text', subdir: '.' }
       ]
     },
