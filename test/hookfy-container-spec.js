@@ -3,7 +3,7 @@ function removeContainer(){
     document.body.removeChild(container);
 }
 
-describe("modal", function(){
+describe("container", function(){
     beforeEach(function(){
       hookfy.initialize("token_1");
       hookfy.feedback();

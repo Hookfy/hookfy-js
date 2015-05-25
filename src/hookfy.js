@@ -71,6 +71,10 @@ var hookfy = (function(){
 
 	function feedback(){
 		var container = retrieveContainer();
+
+		container.innerHTML = '<div id="__hookfy_popup" \
+			style="display: block; width: 300px; height: 400px; margin-left: auto; margin-right: auto; background-color: #fff">\
+		</div>';
 	}
 
 	function retrieveContainer(){
