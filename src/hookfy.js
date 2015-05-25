@@ -73,7 +73,7 @@ var hookfy = (function(){
 		var container = retrieveContainer();
 
 		container.innerHTML = '<div id="__hookfy_popup" \
-			style="display: block; width: 300px; height: 400px; position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; background-color: #fff">\
+			style="font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif; display: block; width: 300px; height: 400px; position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; background-color: #fff">\
 			<h2>'+ options.title +'</h2>\
 		</div>';
 	}
