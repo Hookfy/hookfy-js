@@ -6,7 +6,7 @@ function removeContainer(){
 describe("container", function(){
     beforeEach(function(){
       hookfy.initialize("token_1");
-      hookfy.feedback();
+      hookfy.feedback( { title: "Title" } );
       container = document.getElementById("__hookfy_container");
     });
 
@@ -23,7 +23,7 @@ describe("container", function(){
     });
 
     it("should create only one container", function(){
-      hookfy.feedback();
+      hookfy.feedback( { title: "Title" } );
       removeContainer();
       expect(document.getElementById("__hookfy_container")).toBeNull();
     });
