@@ -4,8 +4,6 @@ var hookfy = (function(){
 	var _storageKey = "__hookfy_feedbacks_storage";
 	var _volatile_storage = [];
 	var _hookfyContainerId = '__hookfy_container';
-
-	new XMLHttpRequest();
 	
 	function initialize(token){
 		_token = token;
@@ -70,12 +68,24 @@ var hookfy = (function(){
 	}
 
 	function feedback(options){
-		var container = retrieveContainer();
+		try{
+			validateOptions(options);
+			var container = retrieveContainer();
+			container.innerHTML = '<div id="__hookfy_popup" \
+				style="font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif; display: block; width: 300px; height: 400px; position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; background-color: #fff">\
+				<h2>'+ options.title +'</h2>\
+			</div>';
+		} catch (error){
+			console.error(error);
+		}
+	}
 
-		container.innerHTML = '<div id="__hookfy_popup" \
-			style="font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif; display: block; width: 300px; height: 400px; position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; background-color: #fff">\
-			<h2>'+ options.title +'</h2>\
-		</div>';
+	function validateOptions(options){
+		if (!options)
+			throw "feedback options can't be blank";
+
+		if (!(options.title || options.title == ''))
+			throw "feedback title can't be blank";
 	}
 
 	function retrieveContainer(){
