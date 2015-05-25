@@ -20,7 +20,7 @@ describe("background", function(){
 			expect(http.async).toEqual(true);
 		});
 
-		hookfy.feedback({ feeling: "sad", feature: "Feature", comment: "a coment"});
+		hookfy.send({ feeling: "sad", feature: "Feature", comment: "a coment"});
 		jasmine.clock().tick(101);
 
 		expect(hookfy.getStorage().length).toEqual(0);
@@ -31,7 +31,7 @@ describe("background", function(){
 			expect(data).toEqual('{"feedback":{"feeling":"sad","comment":"a coment"}}');
 		});
 		
-		hookfy.feedback({ feeling: "sad", feature: "Feature", comment: "a coment"});
+		hookfy.send({ feeling: "sad", feature: "Feature", comment: "a coment"});
 		jasmine.clock().tick(101);
 
 		expect(hookfy.getStorage().length).toEqual(1);

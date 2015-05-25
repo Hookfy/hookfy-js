@@ -68,11 +68,18 @@ var hookfy = (function(){
 		setInterval( registerFeedbacks, 100);
 	}
 
+	function feedback(){
+		var container = document.createElement('div');
+		container.setAttribute('id', '__hookfy_container');
+		document.body.appendChild(container);
+	}
+
 	return {
 		initialize : initialize,
 		getToken: getToken,
-		feedback: send,
-		getStorage: getStorage
+		send: send,
+		getStorage: getStorage,
+		feedback: feedback
 	}
 })();
 
