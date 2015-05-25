@@ -71,6 +71,7 @@ var hookfy = (function(){
 	function feedback(){
 		var container = document.createElement('div');
 		container.setAttribute('id', '__hookfy_container');
+		container.setAttribute('style', 'display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%');
 		document.body.appendChild(container);
 	}
 
