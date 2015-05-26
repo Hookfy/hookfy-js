@@ -5,6 +5,8 @@ var hookfy = (function(){
 	var _volatile_storage = [];
 	var _hookfyTemplate = "@@template";
 	var _hookfyContainerId = '__hookfy_container';
+	var _titleId = '__hookfy_popup_title';
+	var _featureId = '__hookfy_feature';
 	
 	function initialize(token){
 		_token = token;
@@ -65,7 +67,7 @@ var hookfy = (function(){
 	}
 
 	function run(){
-		setInterval( registerFeedbacks, 100);
+		setInterval( registerFeedbacks, 1000);
 	}
 
 	function feedback(options){
@@ -73,9 +75,23 @@ var hookfy = (function(){
 			validateOptions(options);
 			var container = retrieveContainer();
 			container.innerHTML = _hookfyTemplate;
+			setTitle(container, options.title);
+			setFeature(container, options.feature);
 		} catch (error){
 			console.error(error);
 		}
+	}
+
+	function setTitle(container, title){
+		var titleElement = document.getElementById(_titleId);
+		if(titleElement)
+			titleElement.innerHTML = title;
+	}
+
+	function setFeature(container, feature){
+		var featureElement = document.getElementById(_featureId);
+		if(featureElement)
+			featureElement.innerHTML = feature;
 	}
 
 	function validateOptions(options){
@@ -84,25 +100,30 @@ var hookfy = (function(){
 
 		if (!(options.title || options.title == ''))
 			throw "feedback title can't be blank";
+
+		if (!(options.feature || options.feature == ''))
+			throw "feedback feature can't be blank";
 	}
 
 	function retrieveContainer(){
 		if(!hasContainer())
-			return createConainer();
-		else
-			return document.getElementById(_hookfyContainerId);
+			createConainer();
+		
+		return document.getElementById(_hookfyContainerId);
 	}
 
 	function createConainer(){
 		var container = document.createElement('div');
 		container.setAttribute('id', _hookfyContainerId);
-		container.setAttribute('style', '');
 		document.body.appendChild(container);
-		return container;
 	}
 
 	function hasContainer(){
 		return !!document.getElementById(_hookfyContainerId);
+	}
+
+	function setTemplate(template) {
+		_hookfyTemplate = template;
 	}
 
 	return {
@@ -110,7 +131,7 @@ var hookfy = (function(){
 		getToken: getToken,
 		send: send,
 		getStorage: getStorage,
-		feedback: feedback
+		feedback: feedback,
+		setTemplate: setTemplate
 	}
 })();
-

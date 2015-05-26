@@ -14,4 +14,9 @@ describe("validations", function (){
     hookfy.feedback({});
     expect(document.getElementById("__hookfy_container")).toBeNull();
   });
+
+  it("should not start feedback without feature", function(){
+    hookfy.feedback({ title: "title" });
+    expect(document.getElementById("__hookfy_container")).toBeNull();
+  });
 });

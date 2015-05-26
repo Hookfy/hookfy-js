@@ -21,7 +21,7 @@ describe("background", function(){
 		});
 
 		hookfy.send({ feeling: "sad", feature: "Feature", comment: "a coment"});
-		jasmine.clock().tick(101);
+		jasmine.clock().tick(1001);
 
 		expect(hookfy.getStorage().length).toEqual(0);
 	});
@@ -32,7 +32,7 @@ describe("background", function(){
 		});
 		
 		hookfy.send({ feeling: "sad", feature: "Feature", comment: "a coment"});
-		jasmine.clock().tick(101);
+		jasmine.clock().tick(1001);
 
 		expect(hookfy.getStorage().length).toEqual(1);
 	});
