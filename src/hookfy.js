@@ -3,6 +3,7 @@ var hookfy = (function(){
 	var _token = null;
 	var _storageKey = "__hookfy_feedbacks_storage";
 	var _volatile_storage = [];
+	var _hookfyTemplate = "@@template";
 	var _hookfyContainerId = '__hookfy_container';
 	
 	function initialize(token){
@@ -71,10 +72,7 @@ var hookfy = (function(){
 		try{
 			validateOptions(options);
 			var container = retrieveContainer();
-			container.innerHTML = '<div id="__hookfy_popup" \
-				style="font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif; display: block; width: 300px; height: 400px; position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; background-color: #fff">\
-				<h2>'+ options.title +'</h2>\
-			</div>';
+			container.innerHTML = _hookfyTemplate;
 		} catch (error){
 			console.error(error);
 		}
@@ -98,7 +96,7 @@ var hookfy = (function(){
 	function createConainer(){
 		var container = document.createElement('div');
 		container.setAttribute('id', _hookfyContainerId);
-		container.setAttribute('style', 'display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6)');
+		container.setAttribute('style', '');
 		document.body.appendChild(container);
 		return container;
 	}

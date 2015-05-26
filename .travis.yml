@@ -8,7 +8,7 @@ install:
   - npm install
 
 script:
-  - npm test
+  - grunt
 
 after_script:
   - CODECLIMATE_REPO_TOKEN=155c1e0e145132eb6cf11fe6398f8e4783c2261cb2bc46976853c84135f2cc51 codeclimate < coverage/report-lcov/lcov.info

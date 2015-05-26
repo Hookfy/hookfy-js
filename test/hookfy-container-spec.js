@@ -28,8 +28,8 @@ describe("container", function(){
       expect(document.getElementById("__hookfy_container")).toBeNull();
     });
 
-    it("should by stylized", function(){
-      var style = 'display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6)';
-      expect(container.getAttribute('style')).toEqual(style);
-    });
+    // it("should by stylized", function(){
+    //   var style = 'display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6)';
+    //   expect(container.getAttribute('style')).toEqual(style);
+    // });
 });
